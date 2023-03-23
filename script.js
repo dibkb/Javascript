@@ -2,14 +2,16 @@ const person = new Object({
   name: "John Doe",
   proession: "Teacher",
   age: 43,
-  info: function () {
-    return `${this.name} is ${this.age} years old`;
+  set updateName(newname) {
+    this.name = newname;
   },
 });
 let content = "";
 for (x in person) {
   content += person[x] + " ";
 }
-document.getElementById("person").innerHTML = content;
 const personArr = Object.values(person);
-// console.log(personArr[3]());
+const personJson = JSON.stringify(person);
+person.updateName = "John Cena";
+document.getElementById("person").innerHTML = person.name;
+console.log(personJson);

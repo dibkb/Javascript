@@ -4,12 +4,17 @@
 //   .then((json) => {
 //     console.log(json);
 //   });
-const display = (val) => {
-  const displayDiv = document.getElementById("display");
-  displayDiv.innerHTML = val;
-};
-const calcluate = (numOne, numTwo, cb) => {
-  const sum = numOne + numTwo;
-  cb(sum);
-};
+// const display = (val) => {
+//   const displayDiv = document.getElementById("display");
+//   displayDiv.innerHTML = val;
+// };
+// const calcluate = (numOne, numTwo, cb) => {
+//   const sum = numOne + numTwo;
+//   cb(sum);
+// };
 // calcluate(5, 4, display);
+const display = () => {
+  const displayDiv = document.getElementById("loading");
+  displayDiv.innerHTML = "Lock and Load";
+};
+setTimeout(display, 3000);

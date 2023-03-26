@@ -13,8 +13,22 @@
 //   cb(sum);
 // };
 // calcluate(5, 4, display);
-const display = (message) => {
-  const displayDiv = document.getElementById("loading");
-  displayDiv.innerHTML = message;
-};
-setTimeout(() => display("Yo yo"), 3000);
+// const display = (message) => {
+//   const displayDiv = document.getElementById("loading");
+//   displayDiv.innerHTML = message;
+// };
+// setTimeout(() => display("Yo yo"), 3000);
+// --------------------------------------- PROMISES------------------------------------
+const myPromise = new Promise((resolve, reject) => {
+  if (true) {
+    resolve("OK");
+  } else {
+    reject("FAILED");
+  }
+});
+myPromise
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err))
+  .finally(() => {
+    console.log("Completed");
+  });

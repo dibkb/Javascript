@@ -1,26 +1,28 @@
-// const multiply = function (a, b) {
-//   return a * b;
-// };
-// const prod = multiply(4, 4);
-// (function () {
-//   console.log("this is an IREF");
-// })();
-const person1 = {
-  firstName: "John",
-  lastName: "Doe",
-};
-const person2 = {
-  firstName: "Mary",
-  lastName: "Doe",
-};
-const info = {
-  fullName: function () {
-    return this.firstName + " " + this.lastName;
-  },
-  add: function (x, y) {
-    return this.firstName + " " + this.lastName + " " + (x + y);
-  },
-};
-console.log(info.fullName.call(person1));
-console.log(info.add.call(person2, 4, 8));
-console.log(info.add.apply(person2, [4, 8]));
+class Cars {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/hr`);
+  }
+  brake() {
+    this.speed -= 10;
+    console.log(`${this.make} is going at ${this.speed} km/hr`);
+  }
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+  set speedUS(val) {
+    this.speed = this.speed + 1.6 * val;
+  }
+}
+const ford = new Cars("FORD", 120);
+console.log(ford.speedUS);
+ford.accelerate();
+ford.accelerate();
+ford.brake();
+ford.speedUS = 20;
+console.log(ford.speedUS);
+console.log(ford);

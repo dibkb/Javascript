@@ -19,16 +19,20 @@
 // };
 // setTimeout(() => display("Yo yo"), 3000);
 // --------------------------------------- PROMISES------------------------------------
-const myPromise = new Promise((resolve, reject) => {
-  if (true) {
-    resolve("OK");
-  } else {
-    reject("FAILED");
-  }
+// const myPromise = new Promise((resolve, reject) => {
+//   if (true) {
+//     resolve("OK");
+//   } else {
+//     reject("FAILED");
+//   }
+// });
+// myPromise
+//   .then((res) => console.log(res))
+//   .catch((err) => console.log(err))
+//   .finally(() => {
+//     console.log("Completed");
+//   });
+const timeOutPromise = new Promise((resolve, reject) => {
+  setTimeout(() => reject("Sucessfully rejected after 3 seconds"), 3000);
 });
-myPromise
-  .then((res) => console.log(res))
-  .catch((err) => console.log(err))
-  .finally(() => {
-    console.log("Completed");
-  });
+timeOutPromise.then((res) => console.log(res)).catch((err) => console.log(err));

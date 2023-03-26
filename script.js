@@ -32,7 +32,32 @@
 //   .finally(() => {
 //     console.log("Completed");
 //   });
-const timeOutPromise = new Promise((resolve, reject) => {
-  setTimeout(() => reject("Sucessfully rejected after 3 seconds"), 3000);
+// const timeOutPromise = new Promise((resolve, reject) => {
+//   setTimeout(() => reject("Sucessfully rejected after 3 seconds"), 3000);
+// });
+// timeOutPromise.then((res) => console.log(res)).catch((err) => console.log(err));
+// ----------------async functions------------------------
+// async function display() {
+//   return "HelloWorld";
+// }
+// display().then((res) => console.log(res));
+// ------------------DOM--------------------
+// const divs = document.getElementsByTagName("div");
+// console.log(divs[0].innerHTML);
+// const display = document.getElementById("display");
+// display.innerHTML = "Hello";
+// const changeDisplay = (message) => {
+//   const display = document.getElementById("display");
+//   display.innerHTML = message;
+// };
+// const messages = ["1", "2", "3", "5345", "32"];
+// messages.forEach((val, index) => {
+//   changeDisplay(val);
+// });
+const button = document.getElementById("button");
+button.addEventListener("mouseover", function () {
+  this.innerHTML = "Ouch";
 });
-timeOutPromise.then((res) => console.log(res)).catch((err) => console.log(err));
+button.addEventListener("mouseover", function () {
+  this.innerHTML = "Ouch";
+});

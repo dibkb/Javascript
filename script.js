@@ -13,8 +13,8 @@
 //   cb(sum);
 // };
 // calcluate(5, 4, display);
-const display = () => {
+const display = (message) => {
   const displayDiv = document.getElementById("loading");
-  displayDiv.innerHTML = "Lock and Load";
+  displayDiv.innerHTML = message;
 };
-setTimeout(display, 3000);
+setTimeout(() => display("Yo yo"), 3000);

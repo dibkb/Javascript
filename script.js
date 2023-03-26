@@ -1,51 +1,58 @@
-// const person = new Object({
-//   name: "John Doe",
-//   proession: "Teacher",
-//   age: 43,
-//   set updateName(newname) {
-//     this.name = newname;
-//   },
-// });
-// let content = "";
-// for (x in person) {
-//   content += person[x] + " ";
+// class Cars {
+//   constructor(make, speed) {
+//     this.make = make;
+//     this.speed = speed;
+//   }
+//   accelerate() {
+//     this.speed += 10;
+//     console.log(`${this.make} is going at ${this.speed} km/hr`);
+//   }
+//   brake() {
+//     this.speed -= 5;
+//     console.log(`${this.make} is going at ${this.speed} km/hr`);
+//   }
+//   get speedUS() {
+//     return this.speed / 1.6;
+//   }
+//   set speedUS(val) {
+//     this.speed = 1.6 * val;
+//   }
 // }
-// const personArr = Object.values(person);
-// const personJson = JSON.stringify(person);
-// person.updateName = "John Cena";
-// document.getElementById("person").innerHTML = person.name;
-// console.log(personJson);
-// --------------------------- CONSTRUCTOR--------------------------------------
-// function Person(firstName, lastName, age, profession) {
-//   this.firstName = firstName;
-//   this.lastName = lastName;
-//   this.age = age;
-//   this.profession = profession;
-//   this.changeName = function (newFirstName, newLastName) {
-//     this.firstName = newFirstName;
-//     this.lastName = newLastName;
-//   };
-// }
-// const personOne = new Person("John", "Doe", 34, "Terrorist");
-// const personTwo = new Person("Sally", "Rose", 41, "Feminist");
-// console.log(personOne);
-// personOne.changeName("Rowdy", "Rathore");
-// console.log(personOne);
-// --------------------------------SET--------------------------------------
-// const letters = new Set(["a", "b", "c", "c"]);
-// letters.add("g");
-// letters.add("gg");
-// letters.add("g");
-// letters.forEach((val, inedx) => {
-//   console.log(inedx);
-// });
-// console.log(letters.values());
-// --------------------------------MAPS--------------------------------------
-const cars = new Map();
-cars.set("bmw", 4000);
-cars.set("audi", 4000);
-cars.set("lincoln", 5000);
-cars.forEach((car, index) => {
-  console.log(car);
-  console.log("index", index);
-});
+// const ford = new Cars("FORD", 120);
+// console.log(ford.speedUS);
+// ford.accelerate();
+// ford.accelerate();
+// ford.brake();
+// ford.speedUS = 50;
+// console.log(ford);
+
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+Car.prototype.accelerate = function () {
+  this.speed += 10;
+  console.log(`${this.make} is going at ${this.speed} km/hr`);
+};
+Car.prototype.brake = function () {
+  this.speed -= 5;
+  console.log(`${this.make} is going at ${this.speed} km/hr`);
+};
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
+EV.prototype = Object.create(Car.prototype);
+EV.prototype.constructor = EV;
+EV.prototype.chargeBattery = function (val) {
+  this.charge = val;
+};
+EV.prototype.accelerate = function (val) {
+  this.speed += 10;
+  this.charge--;
+  console.log(`${this.make} is going at ${this.speed} km/hr`);
+};
+const tesla = new EV("tesla", 120, 34);
+tesla.chargeBattery(90);
+tesla.accelerate();
+console.log(tesla);
